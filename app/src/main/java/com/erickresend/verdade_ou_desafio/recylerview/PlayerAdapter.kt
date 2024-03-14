@@ -25,11 +25,11 @@ class PlayerAdapter: RecyclerView.Adapter<PlayerViewHolder>() {
     override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
         val player = list[position]
         holder.bind(player)
-        holder.binding.btnDeletePlayer.setOnClickListener {
+        /*holder.binding.btnDeletePlayer.setOnClickListener {
             DataSourcePlayer.removePlayer(position)
             list.removeAt(position)
             notifyDataSetChanged()
-        }
+        }*/
     }
 
     fun setPlayerList(players: List<PlayerModel>) {

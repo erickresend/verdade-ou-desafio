@@ -1,7 +1,16 @@
 package com.erickresend.verdade_ou_desafio.models
 
-import android.text.Editable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-data class PlayerModel(
+@Entity(tableName = "player")
+data class PlayerModel (
+
+    @ColumnInfo(name = "name")
     var name: String
-)
+){
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    var id: Int = 0
+}
