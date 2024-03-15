@@ -1,24 +1,24 @@
-package com.erickresend.verdade_ou_desafio.viewmodels
+package com.erickresend.verdade_ou_desafio.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.erickresend.verdade_ou_desafio.database.PlayerDatabase
-import com.erickresend.verdade_ou_desafio.database.PlayerRepository
-import com.erickresend.verdade_ou_desafio.models.PlayerModel
+import com.erickresend.verdade_ou_desafio.repository.PlayerRepository
+import com.erickresend.verdade_ou_desafio.model.PlayerModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class PlayerViewModel(application: Application) : AndroidViewModel(application) {
 
-    val readAllData: LiveData<List<PlayerModel>>
+    val getAllPlayers: LiveData<List<PlayerModel>>
     private val repository: PlayerRepository
 
     init {
         val playerDao = PlayerDatabase.getDatabase(application).playerDao()
         repository = PlayerRepository(playerDao)
-        readAllData = repository.readAllData
+        getAllPlayers = repository.getAllPlayers
     }
 
     fun insertPlayer(player: PlayerModel) {

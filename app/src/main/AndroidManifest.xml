@@ -13,23 +13,26 @@
         android:theme="@style/Theme.Verdade_ou_desafio"
         tools:targetApi="31">
         <activity
-            android:name=".views.NewPlayerActivity"
+            android:name=".view.EditPlayerActivity"
             android:exported="false" />
         <activity
-            android:name=".views.PlayersActivity"
+            android:name=".view.NewPlayerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.PlayersActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".ResponseActivity"
+            android:name=".view.ResponseActivity"
             android:exported="false" />
         <activity
-            android:name=".views.MainActivity"
-            android:exported="false">
-        </activity>
+            android:name=".view.MainActivity"
+            android:exported="false"></activity>
     </application>
 
 </manifest>

@@ -1,9 +1,8 @@
-package com.erickresend.verdade_ou_desafio.views
+package com.erickresend.verdade_ou_desafio.view
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.erickresend.verdade_ou_desafio.ResponseActivity
 import com.erickresend.verdade_ou_desafio.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

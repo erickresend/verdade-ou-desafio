@@ -2,16 +2,29 @@ package com.erickresend.verdade_ou_desafio.recylerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.erickresend.verdade_ou_desafio.databinding.ResPlayersBinding
-import com.erickresend.verdade_ou_desafio.datas.DataSourcePlayer
-import com.erickresend.verdade_ou_desafio.models.PlayerModel
+import com.erickresend.verdade_ou_desafio.model.PlayerModel
 
-class PlayerAdapter: RecyclerView.Adapter<PlayerViewHolder>() {
+class PlayerAdapter(
+    var onItemClick: OnItemClick
+):
+    RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>() {
 
     private var list = mutableListOf<PlayerModel>()
 
+    interface OnItemClick {
+        fun onClick(player: PlayerModel)
+    }
+
+    inner class PlayerViewHolder(val binding: ResPlayersBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(player: PlayerModel) {
+            binding.textPlayer.text = player.name
+            binding.cardPlayer.setOnClickListener {
+                onItemClick.onClick(player)
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder {
         val binding = ResPlayersBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -25,25 +38,10 @@ class PlayerAdapter: RecyclerView.Adapter<PlayerViewHolder>() {
     override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
         val player = list[position]
         holder.bind(player)
-        /*holder.binding.btnDeletePlayer.setOnClickListener {
-            DataSourcePlayer.removePlayer(position)
-            list.removeAt(position)
-            notifyDataSetChanged()
-        }*/
     }
 
     fun setPlayerList(players: List<PlayerModel>) {
-        list.clear()
         list = players.toMutableList()
-        notifyDataSetChanged()
-    }
-
-    fun getAll(): List<PlayerModel> {
-        return list
-    }
-
-    fun addPlayer(player: PlayerModel) {
-        list.add(player)
         notifyDataSetChanged()
     }
 }

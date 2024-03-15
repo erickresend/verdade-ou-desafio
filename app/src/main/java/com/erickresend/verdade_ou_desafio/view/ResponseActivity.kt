@@ -1,4 +1,4 @@
-package com.erickresend.verdade_ou_desafio
+package com.erickresend.verdade_ou_desafio.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

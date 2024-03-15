@@ -1,6 +1,6 @@
 package com.erickresend.verdade_ou_desafio.datas
 
-import com.erickresend.verdade_ou_desafio.models.TruthModel
+import com.erickresend.verdade_ou_desafio.model.TruthModel
 
 class DataSourceTruth {
 

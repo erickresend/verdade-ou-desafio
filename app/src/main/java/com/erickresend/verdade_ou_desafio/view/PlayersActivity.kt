@@ -1,19 +1,21 @@
-package com.erickresend.verdade_ou_desafio.views
+package com.erickresend.verdade_ou_desafio.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.erickresend.verdade_ou_desafio.database.PlayerRepository
 import com.erickresend.verdade_ou_desafio.databinding.ActivityPlayersBinding
+import com.erickresend.verdade_ou_desafio.model.PlayerModel
 import com.erickresend.verdade_ou_desafio.recylerview.PlayerAdapter
-import com.erickresend.verdade_ou_desafio.viewmodels.PlayerViewModel
+import com.erickresend.verdade_ou_desafio.viewmodel.PlayerViewModel
 
-class PlayersActivity : AppCompatActivity() {
+class PlayersActivity : AppCompatActivity(), PlayerAdapter.OnItemClick {
 
     private lateinit var binding : ActivityPlayersBinding
-    private val adapter = PlayerAdapter()
+    private val adapter = PlayerAdapter(this)
+    private lateinit var adapater: PlayerAdapter
     private lateinit var playerViewModel: PlayerViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,17 +26,13 @@ class PlayersActivity : AppCompatActivity() {
         binding.recyclerviewPlayer.adapter = adapter
         playerViewModel = ViewModelProvider(this).get(PlayerViewModel::class.java)
 
-        playerViewModel.readAllData.observe(this, Observer { player ->
+        playerViewModel.getAllPlayers.observe(this, Observer { player ->
             adapter.setPlayerList(player)
         })
-
-        //adapter.setPlayerList(playerRepository.getAllPlayers())
     }
 
     override fun onResume() {
         super.onResume()
-
-        //adapter.setPlayerList(DataSourcePlayer.getAll())
 
         binding.btnNewPlayer.setOnClickListener {
             startActivity(Intent(this, NewPlayerActivity::class.java))
@@ -43,5 +41,9 @@ class PlayersActivity : AppCompatActivity() {
         binding.btnPlayGame.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
+    }
+
+    override fun onClick(player: PlayerModel) {
+        startActivity(Intent(this, NewPlayerActivity::class.java))
     }
 }

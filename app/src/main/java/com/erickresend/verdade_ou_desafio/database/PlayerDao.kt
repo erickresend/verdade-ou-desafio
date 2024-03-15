@@ -6,7 +6,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.erickresend.verdade_ou_desafio.models.PlayerModel
+import com.erickresend.verdade_ou_desafio.model.PlayerModel
 
 @Dao
 interface PlayerDao {

@@ -1,13 +1,12 @@
-package com.erickresend.verdade_ou_desafio.views
+package com.erickresend.verdade_ou_desafio.view
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.erickresend.verdade_ou_desafio.database.PlayerRepository
 import com.erickresend.verdade_ou_desafio.databinding.ActivityNewPlayerBinding
-import com.erickresend.verdade_ou_desafio.models.PlayerModel
-import com.erickresend.verdade_ou_desafio.viewmodels.PlayerViewModel
+import com.erickresend.verdade_ou_desafio.model.PlayerModel
+import com.erickresend.verdade_ou_desafio.viewmodel.PlayerViewModel
 
 class NewPlayerActivity : AppCompatActivity() {
 
@@ -27,13 +26,14 @@ class NewPlayerActivity : AppCompatActivity() {
         super.onStart()
 
         binding.btnNewPlayer.setOnClickListener {
-            playerViewModel.insertPlayer(PlayerModel(binding.editNewPlayer.text.toString()))
-            Toast.makeText(this, "Sucesso", Toast.LENGTH_SHORT).show()
+            val playerName = binding.editNewPlayer.text.toString()
+            if(playerName.isNotEmpty() || playerName.isNotBlank()) {
+                playerViewModel.insertPlayer(PlayerModel(playerName))
+                finish()
+            } else {
+                Toast.makeText(this, "Digite o nome do jogador", Toast.LENGTH_SHORT).show()
+            }
         }
-
-        /*binding.btnNewPlayer.setOnClickListener {
-            DataSourcePlayer.addPlayer(binding.editNewPlayer.text.toString())
-        }*/
 
         binding.btnClose.setOnClickListener {
             finish()

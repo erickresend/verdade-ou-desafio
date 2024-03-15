@@ -5,13 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.NewPlayerActivity">
+    tools:context=".view.EditPlayerActivity">
 
     <TextView
         android:id="@+id/text_title_new_player"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Novo jogador"
+        android:text="Editar jogador"
         android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,6 +44,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_height="wrap_content" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
