@@ -1,4 +1,4 @@
-package com.erickresend.verdade_ou_desafio.view
+package com.erickresend.verdade_ou_desafio.ui.views
 
 import android.content.Intent
 import android.os.Bundle

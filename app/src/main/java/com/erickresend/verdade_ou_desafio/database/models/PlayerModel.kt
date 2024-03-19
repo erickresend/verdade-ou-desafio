@@ -1,4 +1,4 @@
-package com.erickresend.verdade_ou_desafio.model
+package com.erickresend.verdade_ou_desafio.database.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -9,7 +9,8 @@ data class PlayerModel (
 
     @ColumnInfo(name = "name")
     var name: String
-){
+
+) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     var id: Int = 0

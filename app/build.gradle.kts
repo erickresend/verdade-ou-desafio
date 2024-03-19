@@ -2,8 +2,9 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
 
-    //kotlin("jvm") version "1.9.21" apply false
     id("com.google.devtools.ksp") version "1.9.21-1.0.15"
+
+    id("kotlin-parcelize")
 }
 
 android {

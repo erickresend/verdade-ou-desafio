@@ -1,10 +1,10 @@
-package com.erickresend.verdade_ou_desafio.recylerview
+package com.erickresend.verdade_ou_desafio.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.erickresend.verdade_ou_desafio.databinding.ResPlayersBinding
-import com.erickresend.verdade_ou_desafio.model.PlayerModel
+import com.erickresend.verdade_ou_desafio.database.models.PlayerModel
 
 class PlayerAdapter(
     var onItemClick: OnItemClick
@@ -19,6 +19,7 @@ class PlayerAdapter(
 
     inner class PlayerViewHolder(val binding: ResPlayersBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(player: PlayerModel) {
+            binding.textIdPlayer.text = player.id.toString()
             binding.textPlayer.text = player.name
             binding.cardPlayer.setOnClickListener {
                 onItemClick.onClick(player)

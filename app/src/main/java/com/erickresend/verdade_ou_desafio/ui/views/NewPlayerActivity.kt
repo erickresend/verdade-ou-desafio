@@ -1,12 +1,12 @@
-package com.erickresend.verdade_ou_desafio.view
+package com.erickresend.verdade_ou_desafio.ui.views
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.erickresend.verdade_ou_desafio.databinding.ActivityNewPlayerBinding
-import com.erickresend.verdade_ou_desafio.model.PlayerModel
-import com.erickresend.verdade_ou_desafio.viewmodel.PlayerViewModel
+import com.erickresend.verdade_ou_desafio.database.models.PlayerModel
+import com.erickresend.verdade_ou_desafio.ui.viewmodels.PlayerViewModel
 
 class NewPlayerActivity : AppCompatActivity() {
 
@@ -27,7 +27,7 @@ class NewPlayerActivity : AppCompatActivity() {
 
         binding.btnNewPlayer.setOnClickListener {
             val playerName = binding.editNewPlayer.text.toString()
-            if(playerName.isNotEmpty() || playerName.isNotBlank()) {
+            if(playerName.isNotEmpty() && playerName.isNotBlank()) {
                 playerViewModel.insertPlayer(PlayerModel(playerName))
                 finish()
             } else {

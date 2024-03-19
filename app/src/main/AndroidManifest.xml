@@ -13,13 +13,13 @@
         android:theme="@style/Theme.Verdade_ou_desafio"
         tools:targetApi="31">
         <activity
-            android:name=".view.EditPlayerActivity"
+            android:name=".ui.views.EditPlayerActivity"
             android:exported="false" />
         <activity
-            android:name=".view.NewPlayerActivity"
+            android:name=".ui.views.NewPlayerActivity"
             android:exported="false" />
         <activity
-            android:name=".view.PlayersActivity"
+            android:name=".ui.views.PlayersActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,10 +28,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.ResponseActivity"
+            android:name=".ui.views.ResponseActivity"
             android:exported="false" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".ui.views.MainActivity"
             android:exported="false"></activity>
     </application>
 

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.EditPlayerActivity">
+    tools:context=".ui.views.EditPlayerActivity">
 
     <TextView
         android:id="@+id/text_title_new_player"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edit_new_player"
+        android:id="@+id/edit_edit_player"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -28,14 +28,14 @@
         app:layout_constraintTop_toBottomOf="@+id/text_title_new_player" />
 
     <Button
-        android:id="@+id/btn_new_player"
+        android:id="@+id/btn_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Salvar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_new_player" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_edit_player" />
 
     <ImageButton
         android:id="@+id/btn_close"
@@ -44,5 +44,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_height="wrap_content" />
+
+    <ImageButton
+        android:id="@+id/btn_delete_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btn_save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/img_trash"
+        android:layout_marginTop="8dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

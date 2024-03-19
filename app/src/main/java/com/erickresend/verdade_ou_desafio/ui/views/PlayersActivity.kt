@@ -1,21 +1,19 @@
-package com.erickresend.verdade_ou_desafio.view
+package com.erickresend.verdade_ou_desafio.ui.views
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.erickresend.verdade_ou_desafio.databinding.ActivityPlayersBinding
-import com.erickresend.verdade_ou_desafio.model.PlayerModel
-import com.erickresend.verdade_ou_desafio.recylerview.PlayerAdapter
-import com.erickresend.verdade_ou_desafio.viewmodel.PlayerViewModel
+import com.erickresend.verdade_ou_desafio.database.models.PlayerModel
+import com.erickresend.verdade_ou_desafio.ui.adapters.PlayerAdapter
+import com.erickresend.verdade_ou_desafio.ui.viewmodels.PlayerViewModel
 
 class PlayersActivity : AppCompatActivity(), PlayerAdapter.OnItemClick {
 
     private lateinit var binding : ActivityPlayersBinding
     private val adapter = PlayerAdapter(this)
-    private lateinit var adapater: PlayerAdapter
     private lateinit var playerViewModel: PlayerViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,9 +39,17 @@ class PlayersActivity : AppCompatActivity(), PlayerAdapter.OnItemClick {
         binding.btnPlayGame.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
+
+        binding.btnTeste.setOnClickListener {
+            val player = playerViewModel.getPlayer(1)
+            //Toast.makeText(this, player[0].name, Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onClick(player: PlayerModel) {
-        startActivity(Intent(this, NewPlayerActivity::class.java))
+        val intent = Intent(this, EditPlayerActivity::class.java)
+        intent.putExtra("playerId", player.id)
+        intent.putExtra("playerName", player.name)
+        startActivity(intent)
     }
 }

@@ -4,7 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.erickresend.verdade_ou_desafio.model.PlayerModel
+import com.erickresend.verdade_ou_desafio.database.daos.PlayerDao
+import com.erickresend.verdade_ou_desafio.database.models.PlayerModel
 
 @Database(entities = [PlayerModel::class], version = 1, exportSchema = false)
 abstract class PlayerDatabase: RoomDatabase() {
