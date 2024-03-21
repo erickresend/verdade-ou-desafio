@@ -37,7 +37,7 @@ class PlayersActivity : AppCompatActivity(), PlayerAdapter.OnItemClick {
         }
 
         binding.btnPlayGame.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, ModeActivity::class.java))
         }
     }
 

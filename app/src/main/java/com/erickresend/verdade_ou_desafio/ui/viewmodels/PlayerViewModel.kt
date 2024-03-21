@@ -38,8 +38,4 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
             repository.deletePlayer(id)
         }
     }
-
-    fun getPlayer(id: Int): PlayerModel {
-        return repository.getPlayer(id)
-    }
 }

@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Verdade_ou_desafio"
         tools:targetApi="31">
         <activity
+            android:name=".ui.views.ModeActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.views.EditPlayerActivity"
             android:exported="false" />
         <activity
@@ -31,8 +34,8 @@
             android:name=".ui.views.ResponseActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.views.MainActivity"
-            android:exported="false"></activity>
+            android:name=".ui.views.ChoiceActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
