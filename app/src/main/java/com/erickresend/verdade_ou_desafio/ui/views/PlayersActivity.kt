@@ -39,11 +39,6 @@ class PlayersActivity : AppCompatActivity(), PlayerAdapter.OnItemClick {
         binding.btnPlayGame.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
-
-        binding.btnTeste.setOnClickListener {
-            val player = playerViewModel.getPlayer(1)
-            //Toast.makeText(this, player[0].name, Toast.LENGTH_SHORT).show()
-        }
     }
 
     override fun onClick(player: PlayerModel) {

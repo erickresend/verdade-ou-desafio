@@ -19,7 +19,6 @@ class PlayerAdapter(
 
     inner class PlayerViewHolder(val binding: ResPlayersBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(player: PlayerModel) {
-            binding.textIdPlayer.text = player.id.toString()
             binding.textPlayer.text = player.name
             binding.cardPlayer.setOnClickListener {
                 onItemClick.onClick(player)
