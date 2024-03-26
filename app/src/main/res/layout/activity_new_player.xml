@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.views.NewPlayerActivity">
 
     <TextView
@@ -23,10 +24,11 @@
     <EditText
         android:id="@+id/edit_new_player"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_margin="32dp"
         android:background="@color/primary"
         android:padding="8dp"
+        android:textAllCaps="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,6 +39,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
+        android:backgroundTint="@color/secondary"
+        android:padding="10dp"
         android:text="Salvar"
         android:textAllCaps="true"
         android:textSize="25sp"
@@ -53,6 +57,18 @@
         android:src="@drawable/img_close"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

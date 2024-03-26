@@ -3,6 +3,7 @@ package com.erickresend.verdade_ou_desafio.ui.viewmodels
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.erickresend.verdade_ou_desafio.database.PlayerDatabase
 import com.erickresend.verdade_ou_desafio.repositories.PlayerRepository

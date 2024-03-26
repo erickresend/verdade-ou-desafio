@@ -7,16 +7,26 @@ import androidx.lifecycle.ViewModelProvider
 import com.erickresend.verdade_ou_desafio.databinding.ActivityEditPlayerBinding
 import com.erickresend.verdade_ou_desafio.database.models.PlayerModel
 import com.erickresend.verdade_ou_desafio.ui.viewmodels.PlayerViewModel
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 
 class EditPlayerActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditPlayerBinding
     private lateinit var playerViewModel: PlayerViewModel
 
+    lateinit var bannerAdView : AdView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        MobileAds.initialize(this) {}
+        bannerAdView = binding.adView
+        val bannerRequest = AdRequest.Builder().build()
+        bannerAdView.loadAd(bannerRequest)
 
         playerViewModel = ViewModelProvider(this).get(PlayerViewModel::class.java)
     }

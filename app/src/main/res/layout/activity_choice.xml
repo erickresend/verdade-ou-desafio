@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -10,32 +11,56 @@
     tools:context=".ui.views.ChoiceActivity">
 
     <TextView
+        android:id="@+id/text_available1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:text="Disponível: "
+        android:layout_marginBottom="16dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
         android:id="@+id/text_cont_true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="true"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_true"
+        android:text="3"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/text_available1"
+        app:layout_constraintBottom_toBottomOf="@+id/text_available1"
+        app:layout_constraintTop_toTopOf="@+id/text_available1"/>
+
+    <TextView
+        android:id="@+id/text_available2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Disponível: "
+        android:layout_marginTop="16dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_challenge" />
 
     <TextView
         android:id="@+id/text_cont_challenge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="challenge"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="1"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/text_available2"
+        app:layout_constraintTop_toTopOf="@+id/text_available2"
+        app:layout_constraintBottom_toBottomOf="@id/text_available2"/>
 
     <Button
         android:id="@+id/btn_true"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
-        android:background="@color/secondary"
+        android:backgroundTint="@color/secondary"
         android:text="verdade"
+        android:padding="10dp"
         android:textAllCaps="true"
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_challenge"
@@ -65,8 +90,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
-        android:background="@color/secondary"
+        android:backgroundTint="@color/secondary"
         android:text="desafio"
+        android:padding="10dp"
         android:textAllCaps="true"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -83,5 +109,17 @@
         android:src="@drawable/img_close"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

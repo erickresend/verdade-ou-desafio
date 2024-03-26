@@ -62,5 +62,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     implementation("androidx.compose.runtime:runtime-livedata:1.6.3")
 
+    // Anuncios
+    implementation("com.google.android.gms:play-services-ads:23.0.0")
+
+
 
 }

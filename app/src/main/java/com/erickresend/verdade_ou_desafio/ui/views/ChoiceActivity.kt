@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.erickresend.verdade_ou_desafio.databinding.ActivityChoiceBinding
 import com.erickresend.verdade_ou_desafio.ui.viewmodels.PlayerViewModel
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 
 class ChoiceActivity : AppCompatActivity() {
 
@@ -17,10 +20,17 @@ class ChoiceActivity : AppCompatActivity() {
     private var contTrue = mutableListOf<Int>()
     private var contChallenge = mutableListOf<Int>()
 
+    lateinit var bannerAdView : AdView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChoiceBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        MobileAds.initialize(this) {}
+        bannerAdView = binding.adView
+        val bannerRequest = AdRequest.Builder().build()
+        bannerAdView.loadAd(bannerRequest)
 
         playerViewModel = ViewModelProvider(this).get(PlayerViewModel::class.java)
 
@@ -104,7 +114,7 @@ class ChoiceActivity : AppCompatActivity() {
                     } else if(mode == "hot") {
                         intent.putExtra("choice", "hotChallenge")
                     }
-
+                    // Resetar os contadores
                     if((contTrue.get(contPlayer) == 0) && (contChallenge.get(contPlayer) == 0)) {
                         contTrue.set(contPlayer, 3)
                         contChallenge.set(contPlayer, 1)

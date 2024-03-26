@@ -9,15 +9,25 @@ import androidx.core.view.WindowInsetsCompat
 import com.erickresend.verdade_ou_desafio.R
 import com.erickresend.verdade_ou_desafio.databinding.ActivityChoiceBinding
 import com.erickresend.verdade_ou_desafio.databinding.ActivityModeBinding
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 
 class ModeActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityModeBinding
 
+    lateinit var bannerAdView : AdView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityModeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        MobileAds.initialize(this) {}
+        bannerAdView = binding.adView
+        val bannerRequest = AdRequest.Builder().build()
+        bannerAdView.loadAd(bannerRequest)
     }
 
     override fun onStart() {

@@ -8,6 +8,9 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card_player"
         android:layout_width="match_parent"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        app:cardPreventCornerOverlap="false"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/primary"
         app:cardUseCompatPadding="true"
