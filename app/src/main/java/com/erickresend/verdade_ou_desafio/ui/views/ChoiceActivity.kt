@@ -20,7 +20,7 @@ class ChoiceActivity : AppCompatActivity() {
     private var contTrue = mutableListOf<Int>()
     private var contChallenge = mutableListOf<Int>()
 
-    lateinit var bannerAdView : AdView
+    private lateinit var bannerAdView : AdView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +32,7 @@ class ChoiceActivity : AppCompatActivity() {
         val bannerRequest = AdRequest.Builder().build()
         bannerAdView.loadAd(bannerRequest)
 
-        playerViewModel = ViewModelProvider(this).get(PlayerViewModel::class.java)
+        playerViewModel = ViewModelProvider(this)[PlayerViewModel::class.java]
 
     }
 
@@ -132,3 +132,124 @@ class ChoiceActivity : AppCompatActivity() {
         }
     }
 }
+
+/*class ChoiceActivity : AppCompatActivity() {
+
+    private lateinit var binding : ActivityChoiceBinding
+    private lateinit var playerViewModel : PlayerViewModel
+
+    private var contPlayer = -1
+    private var contTrue = mutableListOf<Int>()
+    private var contChallenge = mutableListOf<Int>()
+    private lateinit var allPlayers: List<PlayerModel>
+
+    private lateinit var bannerAdView : AdView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityChoiceBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        MobileAds.initialize(this) {}
+        bannerAdView = binding.adView
+        val bannerRequest = AdRequest.Builder().build()
+        bannerAdView.loadAd(bannerRequest)
+
+        playerViewModel = ViewModelProvider(this)[PlayerViewModel::class.java]
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        allPlayers = playerViewModel.getAllPlayers.value!!
+
+        // Adicionando os contadores aos players
+        var cont = 0
+        while (contTrue.size < allPlayers.size) {
+            contTrue.add(cont, 3)
+            contChallenge.add(cont, 1)
+            cont++
+        }
+
+        // Contador pra saber o player da vez
+        contPlayer++
+
+        // Mostrando o player da vez
+        binding.textPlayer.text = allPlayers[contPlayer].name
+
+        // Mudar o nome do jogador da vez
+        if(contPlayer == allPlayers.size) {
+            contPlayer = 0
+            binding.textPlayer.text = allPlayers[contPlayer].name
+            // Mostrando a quantidade de verdade e desafio que o jogador da vez tem
+            binding.textContTrue.text = contTrue[contPlayer].toString()
+            binding.textContChallenge.text = contChallenge[contPlayer].toString()
+        } else {
+            binding.textPlayer.text = allPlayers[contPlayer].name
+            binding.textContTrue.text = contTrue[contPlayer].toString()
+            binding.textContChallenge.text = contChallenge[contPlayer].toString()
+        }
+
+        val mode = intent.getStringExtra("mode")
+
+        binding.btnTrue.setOnClickListener {
+
+            var availableTruths = contTrue[contPlayer]
+
+            if(availableTruths > 0) {
+                availableTruths--
+                contTrue[contPlayer] = availableTruths
+
+                val intent = Intent(this, ResponseActivity::class.java)
+                if(mode == "soft") {
+                    intent.putExtra("choice", "softTrue")
+
+                } else if(mode == "hot") {
+                    intent.putExtra("choice", "hotTrue")
+                }
+
+                if((contTrue[contPlayer] == 0) && (contChallenge[contPlayer] == 0)) {
+                    contTrue[contPlayer] = 3
+                    contChallenge[contPlayer] = 1
+                }
+
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Você já usou suas 3 verdades, escolha desafio" , Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.btnChallenge.setOnClickListener {
+
+            var availableChallenges = contChallenge[contPlayer]
+
+            if(availableChallenges > 0) {
+                availableChallenges--
+                contChallenge[contPlayer] = availableChallenges
+
+                val intent = Intent(this, ResponseActivity::class.java)
+                if(mode == "soft") {
+                    intent.putExtra("choice", "softChallenge")
+
+                } else if(mode == "hot") {
+                    intent.putExtra("choice", "hotChallenge")
+                }
+                // Resetar os contadores
+                if((contTrue[contPlayer] == 0) && (contChallenge[contPlayer] == 0)) {
+                    contTrue[contPlayer] = 3
+                    contChallenge[contPlayer] = 1
+                }
+
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Você já usou seu desafio, escolha verdade" , Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.btnClose.setOnClickListener {
+            finish()
+        }
+    }
+}*/

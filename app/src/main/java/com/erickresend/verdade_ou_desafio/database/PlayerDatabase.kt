@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.erickresend.verdade_ou_desafio.database.daos.PlayerDao
 import com.erickresend.verdade_ou_desafio.database.models.PlayerModel
 
@@ -12,7 +14,7 @@ abstract class PlayerDatabase: RoomDatabase() {
 
     abstract fun playerDao(): PlayerDao
 
-    companion object {
+    /*companion object {
         @Volatile
         private var INSTANCE: PlayerDatabase? = null
 
@@ -31,15 +33,15 @@ abstract class PlayerDatabase: RoomDatabase() {
                 return instance
             }
         }
-    }
+    }*/
 
-    /*companion object {
-        private lateinit var INSTANCE: AppDatabase
+    companion object {
+        private lateinit var INSTANCE: PlayerDatabase
 
-        fun getDataBase(context: Context): AppDatabase {
+        fun getDatabase(context: Context): PlayerDatabase {
             if (!Companion::INSTANCE.isInitialized) {
-                synchronized(AppDatabase::class) {
-                    INSTANCE = Room.databaseBuilder(context, AppDatabase::class.java, "playerdb")
+                synchronized(PlayerDatabase::class) {
+                    INSTANCE = Room.databaseBuilder(context, PlayerDatabase::class.java, "playerdb")
                         .addMigrations(MIGRATION_1_2)
                         .allowMainThreadQueries()
                         .build()
@@ -54,5 +56,5 @@ abstract class PlayerDatabase: RoomDatabase() {
             }
 
         }
-    }*/
+    }
 }

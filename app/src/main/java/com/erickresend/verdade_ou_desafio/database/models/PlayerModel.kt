@@ -8,8 +8,10 @@ import androidx.room.PrimaryKey
 data class PlayerModel (
 
     @ColumnInfo(name = "name")
-    var name: String
+    var name: String,
 
+    @ColumnInfo(name = "sex")
+    var sex: String
 ) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")

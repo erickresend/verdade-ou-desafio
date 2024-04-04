@@ -14,8 +14,8 @@ interface PlayerDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPlayer(player: PlayerModel)
 
-    @Query("UPDATE player SET name = :name WHERE id = :id")
-    suspend fun updatePlayer(id: Int, name: String)
+    @Query("UPDATE player SET name = :name, sex = :sex WHERE id = :id")
+    suspend fun updatePlayer(id: Int, name: String, sex: String)
 
     @Query("DELETE FROM player WHERE id = :id")
     suspend fun deletePlayer(id: Int)

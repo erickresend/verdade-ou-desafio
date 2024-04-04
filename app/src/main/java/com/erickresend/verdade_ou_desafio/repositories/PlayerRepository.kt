@@ -1,26 +1,23 @@
 package com.erickresend.verdade_ou_desafio.repositories
 
-import androidx.lifecycle.LiveData
-import com.erickresend.verdade_ou_desafio.database.daos.PlayerDao
+import android.content.Context
+import com.erickresend.verdade_ou_desafio.database.PlayerDatabase
 import com.erickresend.verdade_ou_desafio.database.models.PlayerModel
 
-class PlayerRepository(private val playerDao: PlayerDao) {
+class PlayerRepository(context: Context) {
 
-    val getAllPlayers: LiveData<List<PlayerModel>> = playerDao.getAllPlayers()
+    private val playerDatabase = PlayerDatabase.getDatabase(context).playerDao()
+    val getAllPlayers = playerDatabase.getAllPlayers()
 
     suspend fun insertPlayer(player: PlayerModel) {
-        playerDao.insertPlayer(player)
+        playerDatabase.insertPlayer(player)
     }
 
-    suspend fun updatePlayer(id: Int, name: String) {
-        playerDao.updatePlayer(id, name)
+    suspend fun updatePlayer(id: Int, name: String, sex: String) {
+        playerDatabase.updatePlayer(id, name, sex)
     }
 
     suspend fun deletePlayer(id: Int) {
-        playerDao.deletePlayer(id)
-    }
-
-    fun getPlayer(id: Int): PlayerModel {
-        return playerDao.getPlayer(id)
+        playerDatabase.deletePlayer(id)
     }
 }

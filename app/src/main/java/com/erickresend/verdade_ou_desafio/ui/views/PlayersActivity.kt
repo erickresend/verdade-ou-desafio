@@ -12,10 +12,7 @@ import com.erickresend.verdade_ou_desafio.ui.adapters.PlayerAdapter
 import com.erickresend.verdade_ou_desafio.ui.viewmodels.PlayerViewModel
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 
 class PlayersActivity : AppCompatActivity(), PlayerAdapter.OnItemClick {
 
@@ -23,7 +20,7 @@ class PlayersActivity : AppCompatActivity(), PlayerAdapter.OnItemClick {
     private val adapter = PlayerAdapter(this)
     private lateinit var playerViewModel: PlayerViewModel
 
-    lateinit var bannerAdView : AdView
+    private lateinit var bannerAdView : AdView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,13 +32,11 @@ class PlayersActivity : AppCompatActivity(), PlayerAdapter.OnItemClick {
         val bannerRequest = AdRequest.Builder().build()
         bannerAdView.loadAd(bannerRequest)
 
-
-
         binding.recyclerviewPlayer.adapter = adapter
-        playerViewModel = ViewModelProvider(this).get(PlayerViewModel::class.java)
+        playerViewModel = ViewModelProvider(this)[PlayerViewModel::class.java]
 
-        playerViewModel.getAllPlayers.observe(this, Observer { player ->
-            adapter.setPlayerList(player)
+        playerViewModel.getAllPlayers.observe(this, Observer {
+            adapter.setPlayerList(it)
         })
     }
 
@@ -69,6 +64,7 @@ class PlayersActivity : AppCompatActivity(), PlayerAdapter.OnItemClick {
         val intent = Intent(this, EditPlayerActivity::class.java)
         intent.putExtra("playerId", player.id)
         intent.putExtra("playerName", player.name)
+        intent.putExtra("playerSex", player.sex)
         startActivity(intent)
     }
 }

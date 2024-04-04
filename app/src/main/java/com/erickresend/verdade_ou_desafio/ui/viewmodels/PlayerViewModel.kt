@@ -13,14 +13,8 @@ import kotlinx.coroutines.launch
 
 class PlayerViewModel(application: Application) : AndroidViewModel(application) {
 
-    val getAllPlayers: LiveData<List<PlayerModel>>
-    private val repository: PlayerRepository
-
-    init {
-        val playerDao = PlayerDatabase.getDatabase(application).playerDao()
-        repository = PlayerRepository(playerDao)
-        getAllPlayers = repository.getAllPlayers
-    }
+    private val repository = PlayerRepository(application.applicationContext)
+    val getAllPlayers = repository.getAllPlayers
 
     fun insertPlayer(player: PlayerModel) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -28,9 +22,9 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
-    fun updatePlayer(id: Int, name: String) {
+    fun updatePlayer(id: Int, name: String, sex: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.updatePlayer(id, name)
+            repository.updatePlayer(id, name, sex)
         }
     }
 

@@ -2,9 +2,12 @@ package com.erickresend.verdade_ou_desafio.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.graphics.drawable.toDrawable
 import androidx.recyclerview.widget.RecyclerView
+import com.erickresend.verdade_ou_desafio.R
 import com.erickresend.verdade_ou_desafio.databinding.ResPlayersBinding
 import com.erickresend.verdade_ou_desafio.database.models.PlayerModel
+import com.erickresend.verdade_ou_desafio.service.Constants
 
 class PlayerAdapter(
     var onItemClick: OnItemClick
@@ -17,9 +20,14 @@ class PlayerAdapter(
         fun onClick(player: PlayerModel)
     }
 
-    inner class PlayerViewHolder(val binding: ResPlayersBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class PlayerViewHolder(private val binding: ResPlayersBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(player: PlayerModel) {
             binding.textPlayer.text = player.name
+            if(player.sex == Constants.SEX.BOY) {
+                binding.imgSex.setImageResource(R.drawable.img_boy)
+            } else {
+                binding.imgSex.setImageResource(R.drawable.img_girl)
+            }
             binding.cardPlayer.setOnClickListener {
                 onItemClick.onClick(player)
             }
