@@ -2,7 +2,6 @@ package com.erickresend.verdade_ou_desafio.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.graphics.drawable.toDrawable
 import androidx.recyclerview.widget.RecyclerView
 import com.erickresend.verdade_ou_desafio.R
 import com.erickresend.verdade_ou_desafio.databinding.ResPlayersBinding

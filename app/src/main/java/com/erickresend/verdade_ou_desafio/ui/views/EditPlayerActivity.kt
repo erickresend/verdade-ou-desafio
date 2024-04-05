@@ -37,10 +37,11 @@ class EditPlayerActivity : AppCompatActivity() {
 
         val playerId = intent.extras?.getInt("playerId")
         val playerName = intent.extras?.getString("playerName")
+
         if(intent.extras?.getString("playerSex") == Constants.SEX.BOY) {
-            binding.btnBoy.isChecked
+            binding.btnBoy.isChecked = true
         } else {
-            binding.btnGirl.isChecked
+            binding.btnGirl.isChecked = true
         }
 
         binding.editEditPlayer.setText(playerName)
