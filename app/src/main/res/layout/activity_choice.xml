@@ -29,25 +29,15 @@
             android:layout_width="match_parent"
             android:layout_height="150dp">
 
-            <ImageView
-                android:id="@+id/img_interrogation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:src="@drawable/img_interrogation"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_title" />
-
             <TextView
                 android:id="@+id/text_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
                 android:text="Verdade"
                 android:textAllCaps="true"
                 android:textColor="@color/primary"
-                android:textSize="28sp"
+                android:textSize="45sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -56,14 +46,13 @@
                 android:id="@+id/text_available1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginTop="4dp"
                 android:text="Disponível: "
                 android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@id/img_interrogation"
-               app:layout_constraintStart_toEndOf="@+id/img_interrogation"
-                app:layout_constraintTop_toTopOf="@id/img_interrogation"/>
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/text_title"
+                app:layout_constraintStart_toStartOf="@id/text_title"
+                app:layout_constraintTop_toBottomOf="@id/text_title" />
 
             <TextView
                 android:id="@+id/text_cont_true"
@@ -71,10 +60,10 @@
                 android:layout_height="wrap_content"
                 android:text="3"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@id/text_available1"
                 app:layout_constraintStart_toEndOf="@id/text_available1"
-                app:layout_constraintTop_toTopOf="@id/text_available1"/>
+                app:layout_constraintTop_toTopOf="@id/text_available1" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -101,25 +90,15 @@
             android:layout_width="match_parent"
             android:layout_height="150dp">
 
-            <ImageView
-                android:id="@+id/img_exclamation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:src="@drawable/img_exclamation"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_title2" />
-
             <TextView
                 android:id="@+id/text_title2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
                 android:text="Desafio"
                 android:textAllCaps="true"
                 android:textColor="@color/primary"
-                android:textSize="28sp"
+                android:textSize="45sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -128,13 +107,13 @@
                 android:id="@+id/text_available2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
                 android:text="Disponível: "
-                android:textSize="20sp"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@id/img_exclamation"
-                app:layout_constraintStart_toEndOf="@+id/img_exclamation"
-                app:layout_constraintTop_toTopOf="@id/img_exclamation" />
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/text_title2"
+                app:layout_constraintStart_toStartOf="@id/text_title2"
+                app:layout_constraintTop_toBottomOf="@+id/text_title2" />
 
             <TextView
                 android:id="@+id/text_cont_challenge"
@@ -142,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:text="1"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@id/text_available2"
                 app:layout_constraintStart_toEndOf="@+id/text_available2"
                 app:layout_constraintTop_toTopOf="@+id/text_available2" />
@@ -152,18 +131,17 @@
     </androidx.cardview.widget.CardView>
 
 
-
     <TextView
         android:id="@+id/text_player"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
-        android:background="@color/primary"
         android:padding="8dp"
         android:text="Jogador"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textSize="30sp"
+        android:textColor="@color/secondary"
+        android:textSize="45sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

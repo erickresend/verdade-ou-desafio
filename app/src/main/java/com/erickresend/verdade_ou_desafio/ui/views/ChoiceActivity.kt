@@ -5,11 +5,14 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.erickresend.verdade_ou_desafio.database.models.PlayerModel
 import com.erickresend.verdade_ou_desafio.databinding.ActivityChoiceBinding
+import com.erickresend.verdade_ou_desafio.service.Constants
 import com.erickresend.verdade_ou_desafio.ui.viewmodels.PlayerViewModel
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+import kotlin.random.Random
 
 class ChoiceActivity : AppCompatActivity() {
 
@@ -81,6 +84,7 @@ class ChoiceActivity : AppCompatActivity() {
                     contTrue.set(contPlayer, availableTruths)
 
                     val intent = Intent(this, ResponseActivity::class.java)
+
                     if(mode == "soft") {
                         intent.putExtra("choice", "softTrue")
 
@@ -92,6 +96,8 @@ class ChoiceActivity : AppCompatActivity() {
                         contTrue.set(contPlayer, 3)
                         contChallenge.set(contPlayer, 1)
                     }
+
+                    dataToResponse(player, intent)
 
                     startActivity(intent)
                 } else {
@@ -120,6 +126,8 @@ class ChoiceActivity : AppCompatActivity() {
                         contChallenge.set(contPlayer, 1)
                     }
 
+                    dataToResponse(player, intent)
+
                     startActivity(intent)
                 } else {
                     Toast.makeText(this, "Você já usou seu desafio, escolha verdade" , Toast.LENGTH_SHORT).show()
@@ -130,6 +138,40 @@ class ChoiceActivity : AppCompatActivity() {
         binding.btnClose.setOnClickListener {
             finish()
         }
+    }
+
+    private fun dataToResponse(player: List<PlayerModel>, intent: Intent) {
+        intent.putExtra("playerName", player[contPlayer].name)
+        intent.putExtra("playerSex", player[contPlayer].sex)
+
+        var randomName = player[Random.nextInt(player.size)].name
+        while (randomName == player[contPlayer].name) {
+            randomName = player[Random.nextInt(player.size)].name
+        }
+        intent.putExtra("bothPlayer", randomName)
+
+        var malePlayer = player[Random.nextInt(player.size)]
+
+        var cont = 0
+        while (malePlayer.sex != Constants.SEX.BOY) {
+            malePlayer = player[Random.nextInt(player.size)]
+            cont++
+            if(cont == player.size){
+                return
+            }
+        }
+        intent.putExtra("malePlayer", malePlayer.name)
+
+        cont = 0
+        var femalePlayer = player[Random.nextInt(player.size)]
+        while (femalePlayer.sex != Constants.SEX.GIRL) {
+            femalePlayer = player[Random.nextInt(player.size)]
+            cont++
+            if(cont == player.size){
+                return
+            }
+        }
+        intent.putExtra("femalePlayer", femalePlayer.name)
     }
 }
 

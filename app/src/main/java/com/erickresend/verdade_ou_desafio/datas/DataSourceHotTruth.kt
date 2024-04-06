@@ -2,11 +2,21 @@ package com.erickresend.verdade_ou_desafio.datas
 
 import com.erickresend.verdade_ou_desafio.database.models.ChallengeModel
 import com.erickresend.verdade_ou_desafio.database.models.TruthModel
+import com.erickresend.verdade_ou_desafio.service.Constants
 
 class DataSourceHotTruth {
 
     companion object {
-        fun createDataSetHotTruth(): ArrayList<TruthModel> {
+        fun createDataSetHotTruth(playerName: String?, playerSex: String?, bothPlayer: String?, malePlayer: String? = "", femalePlayer: String? = ""): ArrayList<TruthModel> {
+
+            fun oppositeSex(): String {
+                if(playerSex == Constants.SEX.BOY) {
+                    return "a ${femalePlayer.toString()}"
+                } else {
+                    return "o ${malePlayer.toString()}"
+                }
+            }
+
             val list = ArrayList<TruthModel>()
             list.add(TruthModel("Qual foi a coisa mais embaraçosa que seus pais já pegaram você fazendo?"))
             list.add(TruthModel("Quem foi a última pessoa com quem ficou? não vale atual namorado(a)"))
@@ -41,10 +51,15 @@ class DataSourceHotTruth {
             list.add(TruthModel("Dar ou receber sexo oral?"))
             list.add(TruthModel("Quantas pessoas você já transou? Pode ser um número aproximado"))
             list.add(TruthModel("Qual a posição que você menos gosta da hora do sexo?"))
+            list.add(TruthModel("Alguem já fez striptease pra você?"))
+            list.add(TruthModel("Alguem já se fantasiou pra você?"))
             list.add(TruthModel(""))
             list.add(TruthModel(""))
             list.add(TruthModel(""))
-            list.add(TruthModel(""))
+
+            if(malePlayer != "" && femalePlayer != "" ){
+                list.add(TruthModel(""))
+            }
 
             return list
         }

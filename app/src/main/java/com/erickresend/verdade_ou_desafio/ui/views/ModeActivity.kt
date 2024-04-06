@@ -17,7 +17,7 @@ class ModeActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityModeBinding
 
-    lateinit var bannerAdView : AdView
+    private lateinit var bannerAdView : AdView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
