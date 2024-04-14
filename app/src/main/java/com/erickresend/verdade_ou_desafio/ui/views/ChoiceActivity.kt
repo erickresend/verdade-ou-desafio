@@ -39,8 +39,8 @@ class ChoiceActivity : AppCompatActivity() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onStart() {
+        super.onStart()
 
         // Contador pra saber o player da vez
         contPlayer++
