@@ -10,9 +10,11 @@
 
 <p align="center">  
 
-⭐ Esse é um projeto para demonstrar meu conhecimento técnico no desenvolvimento Android nativo com Kotlin. Mais informações técnicas abaixo.
+⭐ Esse é um projeto para  demonstrar meu conhecimento técnico no desenvolvimento Android nativo com Kotlin e para que seja usado para diversão entre amigos.
 
-Aplicativo do jogo verdade ou desafio. No aplicativo podemos adicionar, alterar e deletar jogadores. O jogo conta com perguntas e desafios diferentes dependendo do modo de jogo escolhido e do sexo do jogador, tendo restrição da quantidade de vezes que pode ser escolhido verdade ou desafio para que o jogador não fique apenas em um tipo de escolha.
+Aplicativo do jogo verdade ou desafio. No aplicativo podemos adicionar, alterar e deletar jogadores. O jogo conta com mais de 400 perguntas e desafios diferentes filtrados dependendo do modo de jogo escolhido e do sexo do jogador, tendo restrição da quantidade de vezes que pode ser escolhido verdade ou desafio para que o jogador não fique apenas em um tipo de escolha.
+
+Meu primeiro aplicativo criado totalmente do zero, tive a ideia em uma festa onde vi pessoas jogando o jogo da garrafa, mas que a maior dificuldade era elaborar perguntas e desafios interessantes, então decidi criar o aplicativo que faz isso automaticamente.
 
 </p>
 
@@ -32,22 +34,33 @@ Faça o download da <a href="apk/app-debug.apk?raw=true">APK diretamente</a>. Vo
 
 ## Tecnologias usadas e bibliotecas de código aberto
 
-- Minimum SDK level: 22+
 - [Linguagem Kotlin](https://kotlinlang.org/)
 
 - Jetpack
-  - Lifecycle: Observe os ciclos de vida do Android e manipule os estados da interface do usuário após as alterações do ciclo de vida.
-  - ViewModel: Gerencia o detentor de dados relacionados à interface do usuário e o ciclo de vida. Permite que os dados sobrevivam a alterações de configuração, como rotações de tela.
-  - ViewBinding: Liga os componentes do XML no Kotlin através de uma classe que garante segurança de tipo e outras vantagens.
-  - Room: Biblioteca de abstração do banco de dados SQLite que garante segurança em tempo de compilação e facilidade de uso.
+  - Lifecycle
+  - ViewModel
+  - ViewBinding
+  - Room
+  - Lifecycle
 
-- Arquitetura
+- Arquitetura e Design pattern
   - MVVM (View - ViewModel - Model)
   - Comunicação da ViewModel com a View através de LiveData
-  - Repositories para abstração da comunidação com a camada de dados.
+  - Repositories para abstração da comunidação com a camada de dados
+  - Singleton na instância do banco
   
-- Bibliotecas
-  - [Room database](https://github.com/square/retrofit): Biblioteca de abstração do banco de dados SQLite que garante segurança em tempo de compilação e facilidade de uso.
+- Construção de tela com XML
+  - RecyclerView com clique
+  - LinearLayout
+  - ConstraintLayout
+  - CardView
+  - TextView
+  - EditText
+  - RadioGroup e RadioButton
+  - Button
+  - ImageButton
+ 
+- Armazenamento de dados internos
   
 ## Arquitetura
 O jogo Verdade ou desafio utiliza a arquitetura MVVM e o padrão de Repositories, que segue as [recomendações oficiais do Google](https://developer.android.com/topic/architecture).
@@ -63,5 +76,5 @@ Adicionando, alterando e deletando jogadores e atualizando dinamicamente o recyc
 ### Modo e escolha
 <img src="screenshots/gif2.gif" width="25%"/>
 
-Escolhendo o modo de jogo, que terão uma lista de verdades e desafios diferentes, e a escolha entre verdade ou desafio restringindo entre 3 verdades para cada 1 desafio por cada jogador.
+Escolhendo o modo de jogo, que terão uma lista de verdades e desafios diferentes, e a escolha entre verdade ou desafio é restrita entre 3 verdades para cada 1 desafio por cada jogador.
 
